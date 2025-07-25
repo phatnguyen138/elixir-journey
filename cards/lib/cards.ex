@@ -23,4 +23,18 @@ defmodule Cards do
     Enum.split(decks, hand_size)
   end
 
+  def save(deck, file_name \\ "my_deck") do
+    deck_file = :erlang.term_to_binary(deck)
+    File.write(file_name, deck_file)
+  end
+
+  def load(filename) do
+    {status,binary} = File.read(filename)
+
+    case status do
+      :ok -> :erlang.binary_to_term(binary)
+      :error -> "Incorrect file name!"
+    end
+  end
+
 end

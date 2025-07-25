@@ -21,3 +21,9 @@ cards-*.tar
 
 # Temporary files, for example, from tests.
 /tmp/
+
+# Tools version
+.tool-versions
+
+# Ignore generated files
+files/
