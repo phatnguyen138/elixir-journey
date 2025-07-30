@@ -8,10 +8,11 @@ defmodule Cards do
 
   ## Example
       iex> deck = Cards.create_deck()
+      iex> deck
   """
   def create_deck do
-    values = ["One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten",
-     "Jack", "Queen", "King", "Ace"]
+    values = ["Ace", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten",
+     "Jack", "Queen", "King"]
     suits = ["Hearts", "Diamonds", "Clubs", "Spades"]
 
     cards = for suit <- suits, value <- values  do
@@ -27,6 +28,7 @@ defmodule Cards do
   ## Example
       iex> deck = Cards.create_deck()
       iex> shuffled_deck = Cards.shuffle(deck)
+      iex> shuffled_deck
   """
   def shuffle(deck \\ ["Hehe"]) do
     Enum.shuffle(deck)
@@ -37,8 +39,10 @@ defmodule Cards do
 
   ## Example
       iex> deck = Cards.create_deck()
-      iex> hand = ["One of Hearts", "Two of Diamonds"]
-      iex> Cards.contains?(deck, hand)
+      iex> hand = "Ace of Hearts"
+      iex> is_contains = Cards.contains?(deck, hand)
+      iex> is_contains
+      :true
   """
   def contains?(deck, hand) do
     Enum.member?(deck, hand)
@@ -49,9 +53,10 @@ defmodule Cards do
 
   ## Example
       iex> deck = Cards.create_deck()
-      iex> {hand, remaining_deck} = Cards.deal(deck, 5)
+      iex> {hand, remaining_deck} = Cards.deal(deck, 1)
       iex> hand
-      ["One of Hearts", "Two of Diamonds", "Three of Clubs", "Four of Spades", "Five of Hearts"]
+      ["Ace of Hearts"]
+      iex> remaining_deck
   """
   def deal(decks, hand_size \\ 4) do
     Enum.split(decks, hand_size)
@@ -62,7 +67,7 @@ defmodule Cards do
 
   ## Example
       iex> deck = Cards.create_deck()
-      iex> Cards.save(deck, "my_deck")
+      iex> Cards.save(deck, "files/my_deck")
   """
   def save(deck, file_name \\ "my_deck") do
     deck_file = :erlang.term_to_binary(deck)
@@ -87,6 +92,7 @@ defmodule Cards do
 
   ## Example
       iex> hand = Cards.create_hand(5)
+      iex> hand
   """
   def create_hand(hand_size) do
     Cards.create_deck()
