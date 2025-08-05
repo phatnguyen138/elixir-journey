@@ -100,10 +100,47 @@ defmodule Cards do
     |> Cards.deal(hand_size)
   end
 
+  @doc """
+    This function use the map a key to map with pattern matching
+
+  ## Example
+      iex> colors = Cards.mapping_pattern()
+      iex> colors
+      "red"
+  """
   def mapping_pattern do
     colors = %{primary: "red", secondary: "blue"}
     %{primary: first_color} = colors
     first_color
+  end
+
+  @doc """
+    This function represent how to update a value of key in map
+
+  ## Example
+      iex> new_colors = Cards.replace_in_map()
+      iex> new_colors
+      %{primary: "green", secondary: "blue"}
+  """
+  def replace_in_map do
+    colors = %{primary: "red", secondary: "blue"}
+    new_colors = Map.put(colors,:primary, "green")
+    new_colors
+  end
+
+  @doc """
+    This function represent how to update a value of key in map in a new way
+    **Note:** The key must have existed in that map
+
+  ## Example
+      iex> new_colors = Cards.replace_in_map()
+      iex> new_colors
+      %{primary: "green", secondary: "blue"}
+  """
+  def replace_in_map_v2 do
+    colors = %{primary: "red", secondary: "blue"}
+    new_colors = %{colors | primary: "green"}
+    new_colors
   end
 
 end
