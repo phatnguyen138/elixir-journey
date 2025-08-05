@@ -100,4 +100,10 @@ defmodule Cards do
     |> Cards.deal(hand_size)
   end
 
+  def mapping_pattern do
+    colors = %{primary: "red", secondary: "blue"}
+    %{primary: first_color} = colors
+    first_color
+  end
+
 end
