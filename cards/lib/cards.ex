@@ -143,4 +143,14 @@ defmodule Cards do
     new_colors
   end
 
+  def keyword_list do
+    my_keyword = [{:primary,"red"},{:second,"blue"}]
+    my_keyword
+  end
+
+  def keyword_dup do
+    my_keyword = [{:primary,"red"},{:primary,"blue"}]
+    my_keyword[:primary]
+  end
+
 end
