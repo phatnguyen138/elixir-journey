@@ -1,18 +1,15 @@
 defmodule Identicon do
   @moduledoc """
-  Documentation for `Identicon`.
+  This module is used for manipulating image
   """
 
-  @doc """
-  Hello world.
+  def main(input) do
+    input
+    |> hash
+  end
 
-  ## Examples
-
-      iex> Identicon.hello()
-      :world
-
-  """
-  def hello do
-    :world
+  def hash(input) do
+    :crypto.hash(:md5, input)
+    |> :binary.bin_to_list
   end
 end
