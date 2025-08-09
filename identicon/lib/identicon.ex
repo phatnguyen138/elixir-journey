@@ -8,6 +8,13 @@ defmodule Identicon do
     |> hash
     |> pick_color
     |> build_grid
+    |> filter_even
+  end
+
+  def filter_even(%Identicon.Image{grid: grid} = _image) do
+    Enum.filter grid, fn({numb, _index}) ->
+      rem(numb,2) == 0
+    end
   end
 
   def build_grid(%Identicon.Image{hex: hex, color: _color} = image) do
